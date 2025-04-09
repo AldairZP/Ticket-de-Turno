@@ -112,6 +112,3 @@
 - [ ] Preparar presentación para exposición.
     
 
----
-
-¿Te gustaría que te ayude a definir los métodos CRUD en Visual Basic para alguna de las clases? ¿O generar un ejemplo de validación de CURP?
