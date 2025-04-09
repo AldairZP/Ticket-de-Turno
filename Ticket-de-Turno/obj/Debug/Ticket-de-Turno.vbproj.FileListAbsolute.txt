@@ -8,3 +8,14 @@ C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ti
 C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.exe
 C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.xml
 C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.pdb
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\bin\Debug\Ticket-de-Turno.exe.config
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.exe
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.xml
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.pdb
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\bin\Debug\Ticket-de-Turno.exe
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\bin\Debug\Ticket-de-Turno.pdb
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\bin\Debug\Ticket-de-Turno.xml
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.vbprojResolveAssemblyReference.cache
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.Resources.resources
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.vbproj.GenerateResource.Cache
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.LoginForm.resources
