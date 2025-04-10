@@ -42,7 +42,7 @@ Public Class DBManager
     Public Function InsertAdministrator(administrador As Administrador) As Boolean
         Try
             OpenConnection()
-            Dim query As String = "INSERT INTO Administrador (Usuario, Contraseña) VALUES (?, ?)"
+            Dim query As String = "INSERT INTO Administrador (Usuario, Contrasena) VALUES (?, ?)"
             Using cmd As New OleDbCommand(query, connection)
                 cmd.Parameters.AddWithValue("?", administrador.Usuario)
                 cmd.Parameters.AddWithValue("?", administrador.Contrasena)
@@ -86,7 +86,7 @@ Public Class DBManager
                         Dim administrador As New Administrador()
                         administrador.ID = Convert.ToInt32(reader("ID"))
                         administrador.Usuario = reader("Usuario").ToString()
-                        administrador.Contrasena = reader("Contraseña").ToString()
+                        administrador.Contrasena = reader("Contrasena").ToString()
                         administrators.Add(administrador)
                     End While
                 End Using
@@ -111,7 +111,7 @@ Public Class DBManager
                         administrador = New Administrador With {
                             .ID = Convert.ToInt32(reader("ID")),
                             .Usuario = reader("Usuario").ToString(),
-                            .Contrasena = reader("Contraseña").ToString()
+                            .Contrasena = reader("Contrasena").ToString()
                         }
                     End If
                 End Using
@@ -127,7 +127,7 @@ Public Class DBManager
     Public Function UpdateAdministrator(administrador As Administrador) As Boolean
         Try
             OpenConnection()
-            Dim query As String = "UPDATE Administrador SET Usuario = ?, Contraseña = ? WHERE ID = ?"
+            Dim query As String = "UPDATE Administrador SET Usuario = ?, Contrasena = ? WHERE ID = ?"
             Using cmd As New OleDbCommand(query, connection)
                 cmd.Parameters.AddWithValue("?", administrador.Usuario)
                 cmd.Parameters.AddWithValue("?", administrador.Contrasena)
