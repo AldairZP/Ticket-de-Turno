@@ -27,11 +27,11 @@
 
 - [x]  Crear clases: `Administrador.vb`, `Alumno.vb`, `Municipio.vb`, `Solicitud.vb`.
     
-- [ ]  Cada clase debe mapearse con los campos de su tabla correspondiente.
+- [x]  Cada clase debe mapearse con los campos de su tabla correspondiente.
     
-- [ ]  Incluir validaciones internas (por ejemplo, CURP con expresión regular).
+- [x]  Incluir validaciones internas (por ejemplo, CURP con expresión regular).
     
-- [ ]  Implementar métodos CRUD como funciones compartidas (`Shared`) o instanciadas.
+- [x]  Implementar métodos CRUD como funciones compartidas (`Shared`) o instanciadas.
     
 
 ---
