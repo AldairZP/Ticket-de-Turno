@@ -71,7 +71,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Administrador.vb" />
     <Compile Include="Model\DBManager.vb" />
+    <Compile Include="Model\Solicitud.vb" />
     <Compile Include="View\LoginForm.vb">
       <SubType>Form</SubType>
       <CustomToolNamespace>Login</CustomToolNamespace>
