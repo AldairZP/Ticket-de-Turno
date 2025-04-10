@@ -14,7 +14,7 @@
         End Get
         Set(value As String)
             ' Validar CURP antes de asignar
-            Dim validacion = CURPValidator.ValidarConMensaje(value)
+            Dim validacion As ResultadoValidacion = CURPValidator.ValidarConMensaje(value)
             If validacion.Valido Then
                 _curp = value.ToUpper() ' Guardar siempre en mayúsculas
             Else

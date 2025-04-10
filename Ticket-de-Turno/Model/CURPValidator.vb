@@ -1,3 +1,13 @@
+Public Class ResultadoValidacion
+    Public Property Valido As Boolean
+    Public Property Mensaje As String
+
+    Public Sub New(valido As Boolean, mensaje As String)
+        Me.Valido = valido
+        Me.Mensaje = mensaje
+    End Sub
+End Class
+
 Public Class CURPValidator
     ' Lista de códigos de entidades federativas válidos
     Private Shared ReadOnly entidadesFederativas As String() = {"AS", "BC", "BS", "CC", "CL", "CM", "CS", "CH", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS", "NE"}
@@ -65,15 +75,15 @@ Public Class CURPValidator
     End Function
 
     ' Método para mostrar errores específicos de validación
-    Public Shared Function ValidarConMensaje(curp As String) As (Valido As Boolean, Mensaje As String)
+    Public Shared Function ValidarConMensaje(curp As String) As ResultadoValidacion
         ' Si es null o vacío, no es válido
         If String.IsNullOrEmpty(curp) Then
-            Return (False, "La CURP no puede estar vacía.")
+            Return New ResultadoValidacion(False, "La CURP no puede estar vacía.")
         End If
 
         ' Debe tener 18 caracteres
         If curp.Length <> 18 Then
-            Return (False, "La CURP debe tener 18 caracteres.")
+            Return New ResultadoValidacion(False, "La CURP debe tener 18 caracteres.")
         End If
 
         ' Convertir a mayúsculas para facilitar la comparación
@@ -82,7 +92,7 @@ Public Class CURPValidator
         ' Verificar el formato general usando expresión regular
         Dim formatoValido As Boolean = System.Text.RegularExpressions.Regex.IsMatch(curp, "^[A-Z]{4}[A-Z]{2}[A-Z]{2}[0-9]{6}[HM][A-Z]{2}[A-Z0-9]{3}[0-9A-Z]$")
         If Not formatoValido Then
-            Return (False, "Formato de CURP incorrecto.")
+            Return New ResultadoValidacion(False, "Formato de CURP incorrecto.")
         End If
 
         ' Validar fecha (posiciones 8-13)
@@ -108,20 +118,20 @@ Public Class CURPValidator
 
             ' La fecha no debe ser futura
             If fecha > Date.Today Then
-                Return (False, "La fecha de nacimiento no puede ser futura.")
+                Return New ResultadoValidacion(False, "La fecha de nacimiento no puede ser futura.")
             End If
         Catch ex As Exception
             ' Si hay error al convertir, la fecha es inválida
-            Return (False, "La fecha en la CURP es inválida.")
+            Return New ResultadoValidacion(False, "La fecha en la CURP es inválida.")
         End Try
 
         ' Validar entidad federativa (posiciones 16-17)
         Dim entidad As String = curp.Substring(11, 2)
         If Not Array.Exists(entidadesFederativas, Function(e) e = entidad) Then
-            Return (False, "La entidad federativa en la CURP es inválida.")
+            Return New ResultadoValidacion(False, "La entidad federativa en la CURP es inválida.")
         End If
 
         ' Si llegamos hasta aquí, la CURP es válida
-        Return (True, "CURP válida")
+        Return New ResultadoValidacion(True, "CURP válida")
     End Function
 End Class
