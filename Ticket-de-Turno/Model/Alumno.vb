@@ -13,7 +13,14 @@
             Return _curp
         End Get
         Set(value As String)
-            _curp = value
+            ' Validar CURP antes de asignar
+            Dim validacion = CURPValidator.ValidarConMensaje(value)
+            If validacion.Valido Then
+                _curp = value.ToUpper() ' Guardar siempre en mayúsculas
+            Else
+                ' Lanzar excepción con mensaje específico
+                Throw New ArgumentException(validacion.Mensaje)
+            End If
         End Set
     End Property
 
