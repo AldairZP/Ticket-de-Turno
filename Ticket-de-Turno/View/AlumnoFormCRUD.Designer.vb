@@ -214,7 +214,7 @@ Partial Class AlumnoFormCRUD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(408, 443)
+        Me.ClientSize = New System.Drawing.Size(619, 443)
         Me.Controls.Add(Me.BTNborrar)
         Me.Controls.Add(Me.BTNactualizar)
         Me.Controls.Add(Me.BTNleer)

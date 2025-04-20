@@ -442,21 +442,23 @@ Public Class DBManager
         Return requests
     End Function
 
-    Public Function GetRequestById(id As Integer) As Solicitud
+    Public Function GetRequestByCurpNTurn(curp As String, turno As String) As Solicitud
         Dim solicitud As Solicitud = Nothing
         Try
             OpenConnection()
-            Dim query As String = "SELECT * FROM Solicitud WHERE ID = ?"
+            Dim query As String = "SELECT * FROM Solicitud WHERE CURP_Alumno = ? and NumeroTurno = ? "
             Using cmd As New OleDbCommand(query, connection)
-                cmd.Parameters.AddWithValue("?", id)
+                cmd.Parameters.AddWithValue("?", curp)
+                cmd.Parameters.AddWithValue("?", turno)
+
                 Using reader As OleDbDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
                         solicitud = New Solicitud With {
                             .ID = Convert.ToInt32(reader("ID")),
-                            .CURP_Alumno = reader("CurpAlumno").ToString(),
+                            .CURP_Alumno = reader("CURP_Alumno").ToString(),
                             .QuienTramita = reader("QuienTramita").ToString(),
                             .Asunto = reader("Asunto").ToString(),
-                            .Estatus = reader("Status").ToString(),
+                            .Estatus = reader("Estatus").ToString(),
                             .NumeroTurno = reader("NumeroTurno").ToString(),
                             .FechaRegistro = Convert.ToDateTime(reader("FechaRegistro"))
                         }

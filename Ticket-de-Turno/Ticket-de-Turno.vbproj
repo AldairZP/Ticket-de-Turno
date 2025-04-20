@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -50,6 +52,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -112,6 +116,12 @@
     <Compile Include="View\MenuForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\TicketsForm.Designer.vb">
+      <DependentUpon>TicketsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -128,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MenuForm.resx">
       <DependentUpon>MenuForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TicketsForm.resx">
+      <DependentUpon>TicketsForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

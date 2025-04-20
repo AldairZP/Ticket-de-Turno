@@ -22,3 +22,6 @@ C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\De
 C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.LoginForm.resources
 C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.AlumnoFormCRUD.resources
 C:\Users\JONAT\OneDrive\Documents\Visual Studio 2015\Projects\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.MenuForm.resources
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.AlumnoFormCRUD.resources
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.MenuForm.resources
+C:\Users\marco\OneDrive\Documentos\Github\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.TicketsForm.resources
