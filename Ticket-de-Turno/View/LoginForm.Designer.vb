@@ -28,6 +28,7 @@ Partial Class LoginForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BtnLogIn = New System.Windows.Forms.Button()
+        Me.BtnGuess = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TxtID
@@ -81,11 +82,21 @@ Partial Class LoginForm
         Me.BtnLogIn.Text = "Iniciar seción"
         Me.BtnLogIn.UseVisualStyleBackColor = True
         '
+        'BtnGuess
+        '
+        Me.BtnGuess.Location = New System.Drawing.Point(104, 226)
+        Me.BtnGuess.Name = "BtnGuess"
+        Me.BtnGuess.Size = New System.Drawing.Size(75, 23)
+        Me.BtnGuess.TabIndex = 6
+        Me.BtnGuess.Text = "Soy Invitado"
+        Me.BtnGuess.UseVisualStyleBackColor = True
+        '
         'LoginForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.BtnGuess)
         Me.Controls.Add(Me.BtnLogIn)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -105,4 +116,5 @@ Partial Class LoginForm
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents BtnLogIn As Button
+    Friend WithEvents BtnGuess As Button
 End Class

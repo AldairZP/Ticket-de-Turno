@@ -24,6 +24,7 @@ Partial Class MenuForm
     Private Sub InitializeComponent()
         Me.BTNalumnoCRUD = New System.Windows.Forms.Button()
         Me.BTNtickets = New System.Windows.Forms.Button()
+        Me.BtnBack = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'BTNalumnoCRUD
@@ -44,11 +45,21 @@ Partial Class MenuForm
         Me.BTNtickets.Text = "Tickets"
         Me.BTNtickets.UseVisualStyleBackColor = True
         '
+        'BtnBack
+        '
+        Me.BtnBack.Location = New System.Drawing.Point(256, 296)
+        Me.BtnBack.Name = "BtnBack"
+        Me.BtnBack.Size = New System.Drawing.Size(104, 23)
+        Me.BtnBack.TabIndex = 2
+        Me.BtnBack.Text = "Cerrar seción"
+        Me.BtnBack.UseVisualStyleBackColor = True
+        '
         'MenuForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(372, 331)
+        Me.Controls.Add(Me.BtnBack)
         Me.Controls.Add(Me.BTNtickets)
         Me.Controls.Add(Me.BTNalumnoCRUD)
         Me.Name = "MenuForm"
@@ -59,4 +70,5 @@ Partial Class MenuForm
 
     Friend WithEvents BTNalumnoCRUD As Button
     Friend WithEvents BTNtickets As Button
+    Friend WithEvents BtnBack As Button
 End Class

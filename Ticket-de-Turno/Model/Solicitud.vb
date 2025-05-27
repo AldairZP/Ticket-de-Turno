@@ -1,72 +1,167 @@
-﻿Public Class Solicitud
-    Private _id As Integer
-    Private _curpAlumno As String
-    Private _quienTramita As String
-    Private _asunto As String
-    Private _estatus As String
-    Private _numeroTurno As String
-    Private _fechaRegistro As Date
+﻿Imports System.Data.OleDb
 
-    Public Property ID() As Integer
-        Get
-            Return _id
-        End Get
-        Set(value As Integer)
-            _id = value
-        End Set
-    End Property
+Public Class Solicitud
+    Inherits TableInfo
+    Public Sub New()
+        table.Add("ID", "")
+        table.Add("CURP_Alumno", "")
+        table.Add("QuienTramita", "")
+        table.Add("Asunto", "")
+        table.Add("Estatus", "")
+        table.Add("FechaRegistro", "")
 
-    Public Property CURP_Alumno() As String
-        Get
-            Return _curpAlumno
-        End Get
-        Set(value As String)
-            _curpAlumno = value
-        End Set
-    End Property
 
-    Public Property QuienTramita() As String
-        Get
-            Return _quienTramita
-        End Get
-        Set(value As String)
-            _quienTramita = value
-        End Set
-    End Property
+    End Sub
+    Public Overrides Function createTable() As Boolean
+        Try
+            OpenConnection()
+            Dim query As String = "INSERT INTO Solicitud (ID, CURP_Alumno, QuienTramita, Asunto, Estatus, FechaRegistro) " &
+                          "VALUES (?, ?, ?, ?, ?, ?)"
+            Using cmd As New OleDbCommand(query, connection)
+                cmd.Parameters.AddWithValue("?", table("ID"))
+                cmd.Parameters.AddWithValue("?", table("CURP_Alumno"))
+                cmd.Parameters.AddWithValue("?", table("QuienTramita"))
+                cmd.Parameters.AddWithValue("?", table("Asunto"))
+                cmd.Parameters.AddWithValue("?", table("Estatus"))
+                cmd.Parameters.AddWithValue("?", table("FechaRegistro"))
+                cmd.ExecuteNonQuery()
+            End Using
+            Return True
+        Catch ex As Exception
+            MessageBox.Show("Error inserting request: " & ex.Message)
+            Dim result As String = String.Join(Environment.NewLine, table.Select(Function(kv) $"{kv.Key}: {kv.Value}"))
+            MessageBox.Show(result)
+            Return False
+        Finally
+            CloseConnection()
+        End Try
+    End Function
 
-    Public Property Asunto() As String
-        Get
-            Return _asunto
-        End Get
-        Set(value As String)
-            _asunto = value
-        End Set
-    End Property
+    Public Overrides Function delateTable() As Boolean
+        Try
+            OpenConnection()
+            Dim query As String = "DELETE FROM Solicitud WHERE ID = ?"
+            Using cmd As New OleDbCommand(query, connection)
+                cmd.Parameters.AddWithValue("?", table("ID"))
+                Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                Return rowsAffected > 0
+            End Using
 
-    Public Property Estatus() As String
-        Get
-            Return _estatus
-        End Get
-        Set(value As String)
-            _estatus = value
-        End Set
-    End Property
+        Catch ex As Exception
+            MessageBox.Show("Error deleting request: " & ex.Message)
+            Return False
+        Finally
+            CloseConnection()
+        End Try
+    End Function
 
-    Public Property NumeroTurno() As String
-        Get
-            Return _numeroTurno
-        End Get
-        Set(value As String)
-            _numeroTurno = value
-        End Set
-    End Property
+    Public Overrides Function getTable() As Dictionary(Of String, String)
+        Try
+            OpenConnection()
+            Dim query As String = "SELECT * FROM Solicitud WHERE ID = ?"
+            Using cmd As New OleDbCommand(query, connection)
+                cmd.Parameters.AddWithValue("?", table("ID"))
 
-    Public Property FechaRegistro() As Date
-        Get
-            Return _fechaRegistro
-        End Get
-        Set(value As Date)
-            _fechaRegistro = value
-        End Set
-    End Property
+                Using reader As OleDbDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        table("CURP_Alumno") = reader("CURP_Alumno").ToString()
+                        table("QuienTramita") = reader("QuienTramita").ToString()
+                        table("Asunto") = reader("Asunto").ToString()
+                        table("Estatus") = reader("Estatus").ToString()
+                        table("FechaRegistro") = reader("FechaRegistro").ToString()
+                        Return New Dictionary(Of String, String)(table)
+                    Else
+                        MessageBox.Show("Error fetching request: Solicitud no encontrada")
+                        Return Nothing
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error fetching request: " & ex.Message)
+            Return Nothing
+        Finally
+            CloseConnection()
+        End Try
+    End Function
+
+    Public Overrides Function setTable() As Boolean
+        Try
+            OpenConnection()
+            Dim query As String = "UPDATE Solicitud SET CURP_Alumno = ?, QuienTramita = ?, Asunto = ?, " &
+                      "Estatus = ?, FechaRegistro = ? WHERE ID = ?"
+
+            Using cmd As New OleDbCommand(query, connection)
+                cmd.Parameters.AddWithValue("?", table("CURP_Alumno"))
+                cmd.Parameters.AddWithValue("?", table("QuienTramita"))
+                cmd.Parameters.AddWithValue("?", table("Asunto"))
+                cmd.Parameters.AddWithValue("?", table("Estatus"))
+                cmd.Parameters.AddWithValue("?", table("FechaRegistro"))
+                cmd.Parameters.AddWithValue("?", table("ID"))
+
+                Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                Return rowsAffected > 0
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error updating request: " & ex.Message)
+            Return False
+        Finally
+            CloseConnection()
+        End Try
+
+
+        Return True
+    End Function
+
+    Public Overrides Sub setInformation(key As String, value As String)
+        If key = "ID" Then
+            If value.Contains("-") Then
+                table(key) = value
+                Return
+            End If
+            Try
+                OpenConnection()
+                Dim query As String = "SELECT COUNT(*) AS TotalRegistros FROM Solicitud WHERE ID LIKE ?"
+                Using cmd As New OleDbCommand(query, connection)
+                    cmd.Parameters.AddWithValue("?", $"{value}-%")
+                    Dim total As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+                    table(key) = $"{value}-{total}"
+
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error fetching Ticket wowow: " & ex.Message)
+            Finally
+                CloseConnection()
+            End Try
+        ElseIf key = "CURP_Alumno" Then
+            Try
+                OpenConnection()
+                Dim query As String = "SELECT * FROM Alumno WHERE Curp = ?"
+                Using cmd As New OleDbCommand(query, connection)
+                    cmd.Parameters.AddWithValue("?", value)
+                    Using reader As OleDbDataReader = cmd.ExecuteReader()
+                        If reader.Read() Then
+                            Dim curp As String = reader("Curp").ToString()
+                            Dim municipioID As String = reader("MunicipioID").ToString()
+
+                            table(key) = curp
+
+                            If String.IsNullOrEmpty(table("ID")) Or table("ID") = "-" Then
+                                MessageBox.Show("Miku: ")
+                                setInformation("ID", municipioID)
+                                MessageBox.Show("romas: ")
+
+                            End If
+                        End If
+                    End Using
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error fetching Ticket asf: " & ex.Message)
+
+            Finally
+                CloseConnection()
+            End Try
+        Else
+            table(key) = value
+        End If
+    End Sub
 End Class

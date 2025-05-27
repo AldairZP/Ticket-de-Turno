@@ -75,14 +75,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\TheGlobal.vb" />
     <Compile Include="Model\Administrador.vb" />
     <Compile Include="Model\CURPValidator.vb" />
-    <Compile Include="Model\DBManager.vb" />
+    <Compile Include="Model\GetLists.vb" />
     <Compile Include="Model\Solicitud.vb" />
+    <Compile Include="Model\TableInfo.vb" />
     <Compile Include="View\AlumnoFormCRUD.Designer.vb">
       <DependentUpon>AlumnoFormCRUD.vb</DependentUpon>
     </Compile>
     <Compile Include="View\AlumnoFormCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DashBoard.Designer.vb">
+      <DependentUpon>DashBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashBoard.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\LoginForm.vb">
@@ -133,6 +141,9 @@
     <EmbeddedResource Include="View\AlumnoFormCRUD.resx">
       <DependentUpon>AlumnoFormCRUD.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DashBoard.resx">
+      <DependentUpon>DashBoard.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -155,9 +166,7 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

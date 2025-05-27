@@ -1,32 +1,57 @@
-﻿Public Class Administrador
-    Private _id As Integer
-    Private _usuario As String
-    Private _contrasena As String
+﻿Imports System.Data.OleDb
 
-    Public Property ID() As Integer
-        Get
-            Return _id
-        End Get
-        Set(value As Integer)
-            _id = value
-        End Set
-    End Property
+Public Class Administrador
+    Inherits TableInfo
 
-    Public Property Usuario() As String
-        Get
-            Return _usuario
-        End Get
-        Set(value As String)
-            _usuario = value
-        End Set
-    End Property
 
-    Public Property Contrasena() As String
-        Get
-            Return _contrasena
-        End Get
-        Set(value As String)
-            _contrasena = value
-        End Set
-    End Property
+    Public Sub New()
+        table.Add("ID", "")
+        table.Add("Usuario", "")
+        table.Add("Contrasena", "")
+
+
+    End Sub
+
+
+    Public Overrides Function createTable() As Boolean
+        Throw New NotImplementedException()
+    End Function
+
+    Public Overrides Function delateTable() As Boolean
+        Throw New NotImplementedException()
+    End Function
+
+    Public Overrides Function getTable() As Dictionary(Of String, String)
+        Try
+            OpenConnection()
+            Dim query As String = "SELECT * FROM Administrador WHERE ID = ?"
+            Using cmd As New OleDbCommand(query, connection)
+                cmd.Parameters.AddWithValue("?", table("ID"))
+                Using reader As OleDbDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        table("Usuario") = reader("Usuario").ToString()
+                        table("Contrasena") = reader("Contrasena").ToString()
+
+                        Return New Dictionary(Of String, String)(table)
+
+                    Else
+                        
+                        Return Nothing
+                    End If
+
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error fetching student: " & ex.Message)
+            Return Nothing
+        Finally
+            CloseConnection()
+        End Try
+    End Function
+
+    Public Overrides Function setTable() As Boolean
+        Throw New NotImplementedException()
+    End Function
+
+
 End Class

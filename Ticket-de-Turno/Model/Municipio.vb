@@ -1,22 +1,19 @@
 ﻿Public Class Municipio
-    Private _id As Integer
-    Private _nombre As String
+    Inherits TableInfo
 
-    Public Property ID() As Integer
-        Get
-            Return _id
-        End Get
-        Set(value As Integer)
-            _id = value
-        End Set
-    End Property
+    Public Overrides Function createTable() As Boolean
+        Throw New NotImplementedException()
+    End Function
 
-    Public Property Nombre() As String
-        Get
-            Return _nombre
-        End Get
-        Set(value As String)
-            _nombre = value
-        End Set
-    End Property
+    Public Overrides Function delateTable() As Boolean
+        Throw New NotImplementedException()
+    End Function
+
+    Public Overrides Function getTable() As Dictionary(Of String, String)
+        Throw New NotImplementedException()
+    End Function
+
+    Public Overrides Function setTable() As Boolean
+        Throw New NotImplementedException()
+    End Function
 End Class

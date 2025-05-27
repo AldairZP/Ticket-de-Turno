@@ -1,131 +1,54 @@
 ﻿Public Class AlumnoFormCRUD
 
+
+
     Private Sub BTNleer_Click(sender As Object, e As EventArgs) Handles BTNleer.Click
-        ' Validar que se haya ingresado una CURP
-        If String.IsNullOrEmpty(TBcurp.Text) Then
-            MessageBox.Show("Por favor ingrese una CURP para buscar.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
+        Try
 
-        ' Buscar el alumno por CURP
-        Dim alumno As Alumno = DBManager.Instance.GetStudentByCURP(TBcurp.Text)
+            Dim info As Dictionary(Of String, String) = theGlobal.Instance.getTable()
 
-        If alumno IsNot Nothing Then
-            ' Mostrar los datos del alumno en los campos
-            TBnombre.Text = alumno.Nombre
-            TBpaterno.Text = alumno.ApellidoPaterno
-            TBmaterno.Text = alumno.ApellidoMaterno
-            TBtelefono.Text = alumno.Telefono
-            TBcorreo.Text = alumno.Correo
-            CBnivelEscolar.Text = alumno.NivelEscolar
-            TBidMunicipio.Text = alumno.MunicipioID.ToString()
+            TBcurp.Text = info("Curp")
+            TBnombre.Text = info("Nombre")
+            TBpaterno.Text = info("ApellidoPaterno")
+            TBmaterno.Text = info("ApellidoMaterno")
+            TBtelefono.Text = info("Telefono")
+            TBcorreo.Text = info("Correo")
+            CBnivelEscolar.Text = info("NivelEscolar")
+            CBMunicipio.Text = theGlobal.Instance.getInformation("MunicipioID")
 
-            MessageBox.Show("Alumno encontrado.", "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("No se encontró ningún alumno con esa CURP.", "No Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            ' Limpiar los campos excepto la CURP
-            LimpiarCamposExceptoCURP()
-        End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
+
+
     End Sub
 
     Private Sub BTNactualizar_Click(sender As Object, e As EventArgs) Handles BTNactualizar.Click
-        ' Validar que todos los campos necesarios estén llenos
-        If CamposVacios() Then
-            MessageBox.Show("Por favor complete todos los campos.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+        If theGlobal.Instance.setTable() Then
+            MessageBox.Show("Alumno guardado exitosamiente")
+        Else
+            MessageBox.Show("Alumno no encontrado")
         End If
 
-        Try
-            ' Crear un objeto Alumno con los datos de los campos
-            Dim alumno As New Alumno()
-            alumno.CURP = TBcurp.Text
-            alumno.Nombre = TBnombre.Text
-            alumno.ApellidoPaterno = TBpaterno.Text
-            alumno.ApellidoMaterno = TBmaterno.Text
-            alumno.Telefono = TBtelefono.Text
-            alumno.Correo = TBcorreo.Text
-            alumno.NivelEscolar = CBnivelEscolar.Text
-            alumno.MunicipioID = Integer.Parse(TBidMunicipio.Text)
-
-            ' Actualizar el alumno en la base de datos
-            If DBManager.Instance.UpdateStudent(alumno) Then
-                MessageBox.Show("Alumno actualizado correctamente.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                LimpiarCampos()
-            Else
-                MessageBox.Show("No se pudo actualizar el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-        Catch ex As ArgumentException
-            MessageBox.Show("Error de validación: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Catch ex As Exception
-            MessageBox.Show("Error al actualizar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     Private Sub BTNborrar_Click(sender As Object, e As EventArgs) Handles BTNborrar.Click
-        ' Validar que se haya ingresado una CURP
-        If String.IsNullOrEmpty(TBcurp.Text) Then
-            MessageBox.Show("Por favor ingrese una CURP para borrar.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
-
-        ' Confirmar la eliminación
-        Dim resultado As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este alumno?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If resultado = DialogResult.Yes Then
-            ' Borrar el alumno
-            If DBManager.Instance.DeleteStudent(TBcurp.Text) Then
-                MessageBox.Show("Alumno eliminado correctamente.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                LimpiarCampos()
-            Else
-                MessageBox.Show("No se pudo eliminar el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
+        If theGlobal.Instance.delateTable() Then
+            MessageBox.Show("Alumno Borrado exitosamiente")
+            LimpiarCampos()
+        Else
+            MessageBox.Show("Alumno no encontrado")
         End If
     End Sub
 
     Private Sub BTNcrear_Click(sender As Object, e As EventArgs) Handles BTNcrear.Click
-        ' Validar que todos los campos necesarios estén llenos
-        If CamposVacios() Then
-            MessageBox.Show("Por favor complete todos los campos.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+        If theGlobal.Instance.createTable() Then
+            MessageBox.Show("Alumno creado exitosamiente")
         End If
 
-        Try
-            ' Crear un objeto Alumno con los datos de los campos
-            Dim alumno As New Alumno()
-            alumno.CURP = TBcurp.Text
-            alumno.Nombre = TBnombre.Text
-            alumno.ApellidoPaterno = TBpaterno.Text
-            alumno.ApellidoMaterno = TBmaterno.Text
-            alumno.Telefono = TBtelefono.Text
-            alumno.Correo = TBcorreo.Text
-            alumno.NivelEscolar = CBnivelEscolar.Text
-            alumno.MunicipioID = Integer.Parse(TBidMunicipio.Text)
-
-            ' Guardar el alumno en la base de datos
-            If DBManager.Instance.InsertStudent(alumno) Then
-                MessageBox.Show("Alumno creado correctamente.", "Creación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                LimpiarCampos()
-            Else
-                MessageBox.Show("No se pudo crear el alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-        Catch ex As ArgumentException
-            MessageBox.Show("Error de validación: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Catch ex As Exception
-            MessageBox.Show("Error al crear: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     ' Método auxiliar para verificar si hay campos vacíos
-    Private Function CamposVacios() As Boolean
-        Return String.IsNullOrEmpty(TBcurp.Text) OrElse
-               String.IsNullOrEmpty(TBnombre.Text) OrElse
-               String.IsNullOrEmpty(TBpaterno.Text) OrElse
-               String.IsNullOrEmpty(TBmaterno.Text) OrElse
-               String.IsNullOrEmpty(TBtelefono.Text) OrElse
-               String.IsNullOrEmpty(TBcorreo.Text) OrElse
-               String.IsNullOrEmpty(CBnivelEscolar.Text) OrElse
-               String.IsNullOrEmpty(TBidMunicipio.Text)
-    End Function
 
     ' Método auxiliar para limpiar todos los campos del formulario
     Private Sub LimpiarCampos()
@@ -136,17 +59,56 @@
         TBtelefono.Clear()
         TBcorreo.Clear()
         CBnivelEscolar.SelectedIndex = -1
-        TBidMunicipio.Clear()
+        CBMunicipio.SelectedIndex = -1
     End Sub
 
-    ' Método auxiliar para limpiar todos los campos excepto CURP
-    Private Sub LimpiarCamposExceptoCURP()
-        TBnombre.Clear()
-        TBpaterno.Clear()
-        TBmaterno.Clear()
-        TBtelefono.Clear()
-        TBcorreo.Clear()
-        CBnivelEscolar.SelectedIndex = -1
-        TBidMunicipio.Clear()
+
+
+    Private Sub TBcurp_TextChanged(sender As Object, e As EventArgs) Handles TBcurp.TextChanged
+        theGlobal.Instance.setInformation("Curp", TBcurp.Text)
+
+    End Sub
+
+    Private Sub TBnombre_TextChanged(sender As Object, e As EventArgs) Handles TBnombre.TextChanged
+        theGlobal.Instance.setInformation("Nombre", TBnombre.Text)
+    End Sub
+
+    Private Sub TBpaterno_TextChanged(sender As Object, e As EventArgs) Handles TBpaterno.TextChanged
+        theGlobal.Instance.setInformation("ApellidoPaterno", TBpaterno.Text)
+    End Sub
+
+    Private Sub TBmaterno_TextChanged(sender As Object, e As EventArgs) Handles TBmaterno.TextChanged
+        theGlobal.Instance.setInformation("ApellidoMaterno", TBmaterno.Text)
+    End Sub
+
+    Private Sub TBtelefono_TextChanged(sender As Object, e As EventArgs) Handles TBtelefono.TextChanged
+        theGlobal.Instance.setInformation("Telefono", TBtelefono.Text)
+    End Sub
+
+    Private Sub TBcorreo_TextChanged(sender As Object, e As EventArgs) Handles TBcorreo.TextChanged
+        theGlobal.Instance.setInformation("Correo", TBcorreo.Text)
+    End Sub
+
+    Private Sub CBnivelEscolar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBnivelEscolar.SelectedIndexChanged
+        theGlobal.Instance.setInformation("NivelEscolar", CBnivelEscolar.Text)
+    End Sub
+
+
+
+    Private Sub CBMunicipio_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBMunicipio.SelectedIndexChanged
+        theGlobal.Instance.setInformation("MunicipioID", CBMunicipio.Text)
+    End Sub
+
+    Private Sub AlumnoFormCRUD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CBMunicipio.Items.Clear()
+        CBMunicipio.Items.AddRange(theGlobal.Instance.getColumnsOfTable("Municipio", "Nombre").ToArray())
+  
+    End Sub
+
+    Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
+        theGlobal.Instance.changeForm(Me, theGlobal.FORMS.Menu)
+    End Sub
+    Private Sub toClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        theGlobal.Instance.logout(Me)
     End Sub
 End Class

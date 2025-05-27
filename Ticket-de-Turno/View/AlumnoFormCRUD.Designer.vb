@@ -36,12 +36,13 @@ Partial Class AlumnoFormCRUD
         Me.TBmaterno = New System.Windows.Forms.TextBox()
         Me.TBtelefono = New System.Windows.Forms.TextBox()
         Me.TBcorreo = New System.Windows.Forms.TextBox()
-        Me.TBidMunicipio = New System.Windows.Forms.TextBox()
         Me.CBnivelEscolar = New System.Windows.Forms.ComboBox()
         Me.BTNcrear = New System.Windows.Forms.Button()
         Me.BTNleer = New System.Windows.Forms.Button()
         Me.BTNactualizar = New System.Windows.Forms.Button()
         Me.BTNborrar = New System.Windows.Forms.Button()
+        Me.CBMunicipio = New System.Windows.Forms.ComboBox()
+        Me.BtnBack = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -158,15 +159,10 @@ Partial Class AlumnoFormCRUD
         Me.TBcorreo.Size = New System.Drawing.Size(212, 20)
         Me.TBcorreo.TabIndex = 13
         '
-        'TBidMunicipio
-        '
-        Me.TBidMunicipio.Location = New System.Drawing.Point(149, 333)
-        Me.TBidMunicipio.Name = "TBidMunicipio"
-        Me.TBidMunicipio.Size = New System.Drawing.Size(212, 20)
-        Me.TBidMunicipio.TabIndex = 15
-        '
         'CBnivelEscolar
         '
+        Me.CBnivelEscolar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.CBnivelEscolar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CBnivelEscolar.FormattingEnabled = True
         Me.CBnivelEscolar.Items.AddRange(New Object() {"Educación Preescolar", "Educación Primaria", "Educación Secundaria", "Educación Media Superior", "Educación Superior"})
         Me.CBnivelEscolar.Location = New System.Drawing.Point(149, 284)
@@ -176,7 +172,7 @@ Partial Class AlumnoFormCRUD
         '
         'BTNcrear
         '
-        Me.BTNcrear.Location = New System.Drawing.Point(12, 388)
+        Me.BTNcrear.Location = New System.Drawing.Point(15, 388)
         Me.BTNcrear.Name = "BTNcrear"
         Me.BTNcrear.Size = New System.Drawing.Size(75, 23)
         Me.BTNcrear.TabIndex = 17
@@ -210,17 +206,38 @@ Partial Class AlumnoFormCRUD
         Me.BTNborrar.Text = "Borrar"
         Me.BTNborrar.UseVisualStyleBackColor = True
         '
+        'CBMunicipio
+        '
+        Me.CBMunicipio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.CBMunicipio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.CBMunicipio.FormattingEnabled = True
+        Me.CBMunicipio.Items.AddRange(New Object() {"Educación Preescolar", "Educación Primaria", "Educación Secundaria", "Educación Media Superior", "Educación Superior"})
+        Me.CBMunicipio.Location = New System.Drawing.Point(149, 333)
+        Me.CBMunicipio.Name = "CBMunicipio"
+        Me.CBMunicipio.Size = New System.Drawing.Size(212, 21)
+        Me.CBMunicipio.TabIndex = 21
+        '
+        'BtnBack
+        '
+        Me.BtnBack.Location = New System.Drawing.Point(494, 388)
+        Me.BtnBack.Name = "BtnBack"
+        Me.BtnBack.Size = New System.Drawing.Size(94, 23)
+        Me.BtnBack.TabIndex = 22
+        Me.BtnBack.Text = "Volver al menu"
+        Me.BtnBack.UseVisualStyleBackColor = True
+        '
         'AlumnoFormCRUD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(619, 443)
+        Me.Controls.Add(Me.BtnBack)
+        Me.Controls.Add(Me.CBMunicipio)
         Me.Controls.Add(Me.BTNborrar)
         Me.Controls.Add(Me.BTNactualizar)
         Me.Controls.Add(Me.BTNleer)
         Me.Controls.Add(Me.BTNcrear)
         Me.Controls.Add(Me.CBnivelEscolar)
-        Me.Controls.Add(Me.TBidMunicipio)
         Me.Controls.Add(Me.TBcorreo)
         Me.Controls.Add(Me.TBtelefono)
         Me.Controls.Add(Me.TBmaterno)
@@ -256,10 +273,11 @@ Partial Class AlumnoFormCRUD
     Friend WithEvents TBmaterno As TextBox
     Friend WithEvents TBtelefono As TextBox
     Friend WithEvents TBcorreo As TextBox
-    Friend WithEvents TBidMunicipio As TextBox
     Friend WithEvents CBnivelEscolar As ComboBox
     Friend WithEvents BTNcrear As Button
     Friend WithEvents BTNleer As Button
     Friend WithEvents BTNactualizar As Button
     Friend WithEvents BTNborrar As Button
+    Friend WithEvents CBMunicipio As ComboBox
+    Friend WithEvents BtnBack As Button
 End Class
