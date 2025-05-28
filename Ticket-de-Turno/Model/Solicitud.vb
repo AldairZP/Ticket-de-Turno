@@ -146,9 +146,8 @@ Public Class Solicitud
                             table(key) = curp
 
                             If String.IsNullOrEmpty(table("ID")) Or table("ID") = "-" Then
-                                MessageBox.Show("Miku: ")
                                 setInformation("ID", municipioID)
-                                MessageBox.Show("romas: ")
+
 
                             End If
                         End If

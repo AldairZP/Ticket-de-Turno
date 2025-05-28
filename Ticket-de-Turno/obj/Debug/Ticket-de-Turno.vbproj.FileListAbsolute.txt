@@ -39,3 +39,4 @@ C:\Users\WOLFO\OneDrive\Documentos\GitHub\Ticket-de-Turno\Ticket-de-Turno\obj\De
 C:\Users\WOLFO\OneDrive\Documentos\GitHub\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket-de-Turno.pdb
 C:\Users\WOLFO\OneDrive\Documentos\GitHub\Ticket-de-Turno\Ticket-de-Turno\bin\Debug\Ticket-de-Turno.pdb
 C:\Users\WOLFO\OneDrive\Documentos\GitHub\Ticket-de-Turno\Ticket-de-Turno\bin\Debug\Ticket-de-Turno.xml
+C:\Users\WOLFO\OneDrive\Documentos\GitHub\Ticket-de-Turno\Ticket-de-Turno\obj\Debug\Ticket_de_Turno.DashBoard.resources

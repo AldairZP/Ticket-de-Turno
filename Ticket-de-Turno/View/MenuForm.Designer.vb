@@ -51,7 +51,7 @@ Partial Class MenuForm
         Me.BtnBack.Name = "BtnBack"
         Me.BtnBack.Size = New System.Drawing.Size(104, 23)
         Me.BtnBack.TabIndex = 2
-        Me.BtnBack.Text = "Cerrar seción"
+        Me.BtnBack.Text = "Cerrar sesión"
         Me.BtnBack.UseVisualStyleBackColor = True
         '
         'MenuForm

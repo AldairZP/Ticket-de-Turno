@@ -5,4 +5,8 @@
     Private Sub toClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         theGlobal.Instance.logout(Me)
     End Sub
+
+    Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

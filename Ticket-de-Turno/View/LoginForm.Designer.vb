@@ -79,7 +79,7 @@ Partial Class LoginForm
         Me.BtnLogIn.Name = "BtnLogIn"
         Me.BtnLogIn.Size = New System.Drawing.Size(108, 23)
         Me.BtnLogIn.TabIndex = 5
-        Me.BtnLogIn.Text = "Iniciar seción"
+        Me.BtnLogIn.Text = "Iniciar sesión"
         Me.BtnLogIn.UseVisualStyleBackColor = True
         '
         'BtnGuess

@@ -28,12 +28,16 @@
                         txtAsunto.Text = info("Asunto")
                         DTfecha.Value = Date.Parse(info("FechaRegistro"))
                     Catch ex As Exception
-                        MessageBox.Show("Error: " & ex.Message)
+
                     End Try
+                Else
+
                 End If
 
                 LblTicket.Text = "Número: " & theGlobal.Instance.getInformation("ID")
                 LblCurp.Text = "Curp: " & theGlobal.Instance.getInformation("CURP_Alumno")
+            Else
+                MessageBox.Show("Error: Curp no valida")
             End If
         End If
     End Sub
