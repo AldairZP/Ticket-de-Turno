@@ -6,6 +6,7 @@
     Private Sub toClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         theGlobal.Instance.logout(Me)
     End Sub
+
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Inicializar el combobox de municipios
         CargarMunicipios()
@@ -35,7 +36,9 @@
 
             ' Crear nueva serie para el gráfico
             Dim serie As New DataVisualization.Charting.Series("Solicitudes")
-            serie.ChartType = DataVisualization.Charting.SeriesChartType.Pie            ' Agregar la serie al gráfico
+            serie.ChartType = DataVisualization.Charting.SeriesChartType.Pie
+
+            ' Agregar la serie al gráfico
             Chart1.Series.Add(serie)
 
             ' Obtener los datos según el filtro seleccionado usando el modelo
@@ -85,5 +88,13 @@
 
     Private Sub Chart1_Click(sender As Object, e As EventArgs) Handles Chart1.Click
         ' No es necesario implementar acción al hacer clic en el gráfico
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
     End Sub
 End Class

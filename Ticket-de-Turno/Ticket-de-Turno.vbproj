@@ -168,7 +168,19 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="img\driver-license.png" />
+    <Content Include="img\key.png" />
+    <Content Include="img\pie-chart.png" />
+    <Content Include="img\profile.png" />
+    <Content Include="img\ticket.png" />
+    <Content Include="img\wave-green-r.png" />
+    <Content Include="img\wave-green.png" />
+    <Content Include="img\wave-orange-r.png" />
+    <Content Include="img\wave-orange.png" />
+    <Content Include="img\wave-r.png" />
+    <Content Include="img\wave.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
