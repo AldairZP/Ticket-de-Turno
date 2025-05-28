@@ -27,5 +27,32 @@ Ticket-de-Turno
  
  </summary>
 </member>
+<member name="M:Ticket_de_Turno.DashboardModel.ObtenerEstadisticasTotales">
+ <summary>
+ Obtiene las estadísticas totales de todas las solicitudes
+ </summary>
+ <returns>Estructura con las estadísticas</returns>
+</member>
+<member name="M:Ticket_de_Turno.DashboardModel.ObtenerEstadisticasPorMunicipio(System.String)">
+ <summary>
+ Obtiene las estadísticas de solicitudes por municipio específico
+ </summary>
+ <param name="municipioID">ID del municipio</param>
+ <returns>Estructura con las estadísticas</returns>
+</member>
+<member name="M:Ticket_de_Turno.DashboardModel.ObtenerMunicipioID(System.String)">
+ <summary>
+ Obtiene el ID de un municipio por su nombre
+ </summary>
+ <param name="nombreMunicipio">Nombre del municipio</param>
+ <returns>ID del municipio</returns>
+</member>
+<member name="M:Ticket_de_Turno.DashboardModel.ObtenerEstadisticasPorFiltro(System.String)">
+ <summary>
+ Obtiene las estadísticas según el filtro de municipio
+ </summary>
+ <param name="municipioSeleccionado">Nombre del municipio o "Todos"</param>
+ <returns>Estructura con las estadísticas</returns>
+</member>
 </members>
 </doc>

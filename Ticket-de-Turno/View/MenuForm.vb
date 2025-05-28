@@ -17,4 +17,8 @@
     Private Sub toClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         theGlobal.Instance.logout(Me)
     End Sub
+
+    Private Sub BTNdashboard_Click(sender As Object, e As EventArgs) Handles BTNdashboard.Click
+        theGlobal.Instance.changeForm(Me, theGlobal.FORMS.Dashboard)
+    End Sub
 End Class

@@ -30,6 +30,7 @@ Public Class theGlobal
         Menu
         AlumnosCRUD
         Tickets
+        Dashboard
     End Enum
 
 
@@ -90,6 +91,9 @@ Public Class theGlobal
 
             Case FORMS.Tickets
                 newForm = New TicketsForm()
+                currentTable = Tables.Solicitud
+            Case FORMS.Dashboard
+                newForm = New DashBoard()
                 currentTable = Tables.Solicitud
             Case Else
                 newForm = New LoginForm()

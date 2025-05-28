@@ -25,6 +25,7 @@ Partial Class MenuForm
         Me.BTNalumnoCRUD = New System.Windows.Forms.Button()
         Me.BTNtickets = New System.Windows.Forms.Button()
         Me.BtnBack = New System.Windows.Forms.Button()
+        Me.BTNdashboard = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'BTNalumnoCRUD
@@ -54,11 +55,21 @@ Partial Class MenuForm
         Me.BtnBack.Text = "Cerrar sesión"
         Me.BtnBack.UseVisualStyleBackColor = True
         '
+        'BTNdashboard
+        '
+        Me.BTNdashboard.Location = New System.Drawing.Point(110, 115)
+        Me.BTNdashboard.Name = "BTNdashboard"
+        Me.BTNdashboard.Size = New System.Drawing.Size(146, 23)
+        Me.BTNdashboard.TabIndex = 3
+        Me.BTNdashboard.Text = "Dashboard"
+        Me.BTNdashboard.UseVisualStyleBackColor = True
+        '
         'MenuForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(372, 331)
+        Me.Controls.Add(Me.BTNdashboard)
         Me.Controls.Add(Me.BtnBack)
         Me.Controls.Add(Me.BTNtickets)
         Me.Controls.Add(Me.BTNalumnoCRUD)
@@ -71,4 +82,5 @@ Partial Class MenuForm
     Friend WithEvents BTNalumnoCRUD As Button
     Friend WithEvents BTNtickets As Button
     Friend WithEvents BtnBack As Button
+    Friend WithEvents BTNdashboard As Button
 End Class
